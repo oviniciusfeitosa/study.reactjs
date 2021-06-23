@@ -1,5 +1,31 @@
 # ReactJS
 
+## Todo
+
+- [ ] Product Module
+  - [ ] Category
+    - [ ] Create a category Page
+    - [ ] Create a form component
+      - [ ] Action Create
+      - [ ] Action Update
+    - [ ] Create a list component
+      - [ ] Create a list route
+    - [ ] Create a detail component
+      - [ ] Create a detail route
+    - [ ] Action Delete
+      - [ ] Create a delete route
+  - [ ] Product
+    - [ ] Create a product Page
+    - [ ] Create a form component
+      - [ ] Action Create
+      - [ ] Action Update
+    - [ ] Create a list component
+      - [ ] Create a list route
+    - [ ] Create a detail component
+      - [ ] Create a detail route
+    - [ ] Action Delete
+      - [ ] Create a delete route
+
 ## Config
 
 - Install dependencies
