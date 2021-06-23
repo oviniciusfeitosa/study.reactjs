@@ -2,11 +2,11 @@ import React, { createContext, useState, useContext } from "react";
 
 const CategoryContext = createContext();
 export const CategoryProvider = ({ children }) => {
-  const [categories, setCategory] = useState([{ id: "", name: "" }]);
+  const [categories, setCategory] = useState([{ id: 0, name: "" }]);
 
   const addCategory = (category) => {
-    console.log(category);
-    setCategory([...categories, category]);
+    const id = ++{ ...categories[categories.length - 1] }.id;
+    setCategory([...categories, { id, name: category.name }]);
   };
 
   const handleEditCategory = (category) => {
@@ -40,8 +40,8 @@ export const CategoryProvider = ({ children }) => {
 };
 
 export function useCategories() {
-  const { categories, handleEditCategory, handleDeleteCategory } =
+  const { categories, handleEditCategory, handleDeleteCategory, addCategory } =
     useContext(CategoryContext);
 
-  return { categories, handleEditCategory, handleDeleteCategory };
+  return { categories, handleEditCategory, handleDeleteCategory, addCategory };
 }

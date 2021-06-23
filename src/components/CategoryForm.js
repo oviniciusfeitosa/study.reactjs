@@ -1,26 +1,26 @@
 import { Button, TextField, Grid, Typography } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
 import React, { useState } from "react";
+import { useCategories } from "../context/CategoryContext";
 
 export const CategoryForm = () => {
-  const [category, setCategory] = useState({ id: 0, name: "" });
+  const { addCategory } = useCategories();
+  // const [category, setCategory] = useState({ id: 0, name: "" });
 
-  const handleAddCategory = (e) => {
-    
-    //@todo: Obter último id de categoria e incrementar antes de adicionar um novo
-    setCategory({
-      ...category,
-      { 
-        id: category.id+= 1,
-        name: e.target.value
-      }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+    addCategory({
+      name: data.get("name"),
     });
-  }
+    event.target.reset();
+  };
 
   return (
     <>
-      <form>
-        <h2>Formulário</h2>
+      <h2>Formulário</h2>
+      <form onSubmit={handleSubmit}>
         <Grid
           container
           direction="column"
@@ -29,15 +29,21 @@ export const CategoryForm = () => {
           spacing={2}
         >
           <Grid item xs={12}>
-            <TextField required label="Name" variant="outlined" />
+            <TextField
+              required
+              id="name"
+              name="name"
+              label="Name"
+              variant="outlined"
+            />
           </Grid>
           <Grid item xs={12}>
             <Button
+              type="submit"
               variant="contained"
               color="primary"
               size="small"
               startIcon={<SaveIcon />}
-              onChange={(e) => handleAddCategory(e)}
             >
               Save
             </Button>

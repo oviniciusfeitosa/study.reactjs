@@ -23,13 +23,17 @@ function CategoryList() {
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Title</TableCell>
+              <TableCell>Id</TableCell>
+              <TableCell>Name</TableCell>
               <TableCell align="left">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {categories.map((category) => (
               <TableRow key={category.id}>
+                <TableCell component="th" scope="row">
+                  {category.id}
+                </TableCell>
                 <TableCell component="th" scope="row">
                   {category.name}
                 </TableCell>
