@@ -3,9 +3,10 @@
 ## Todo
 
 - [ ] Product Module
-  - [ ] Category
-    - [ ] Create a category Page
+  - [ ] Category 
+    - [x] Create a category Page
     - [ ] Create a form component
+      > Fields: Name
       - [ ] Action Create
       - [ ] Action Update
     - [ ] Create a list component
