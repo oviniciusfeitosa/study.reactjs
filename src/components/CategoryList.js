@@ -1,11 +1,62 @@
 import React from "react";
 import { useCategories } from "../context/CategoryContext";
 
-function CategoryList() {
-  const { categories } = useCategories();
+import {
+  Button,
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@material-ui/core";
 
-  console.log(categories);
-  return <h1>CategoryList</h1>;
+function CategoryList() {
+  const { categories, handleEditCategory, handleDeleteCategory } =
+    useCategories();
+
+  return (
+    <>
+      <h1>CategoryList</h1>
+      <TableContainer component={Paper}>
+        <Table size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Title</TableCell>
+              <TableCell align="left">Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {categories.map((category) => (
+              <TableRow key={category.id}>
+                <TableCell component="th" scope="row">
+                  {category.name}
+                </TableCell>
+                <TableCell align="left">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleEditCategory(category)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleDeleteCategory(category.id)}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Remove
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  );
 }
 
 export default CategoryList;

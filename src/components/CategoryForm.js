@@ -1,8 +1,22 @@
 import { Button, TextField, Grid, Typography } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
-import React from "react";
+import React, { useState } from "react";
 
 export const CategoryForm = () => {
+  const [category, setCategory] = useState({ id: 0, name: "" });
+
+  const handleAddCategory = (e) => {
+    
+    //@todo: Obter último id de categoria e incrementar antes de adicionar um novo
+    setCategory({
+      ...category,
+      { 
+        id: category.id+= 1,
+        name: e.target.value
+      }
+    });
+  }
+
   return (
     <>
       <form>
@@ -23,6 +37,7 @@ export const CategoryForm = () => {
               color="primary"
               size="small"
               startIcon={<SaveIcon />}
+              onChange={(e) => handleAddCategory(e)}
             >
               Save
             </Button>

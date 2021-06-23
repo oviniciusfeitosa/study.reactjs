@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { CategoryForm } from "../components/CategoryForm";
 import CategoryList from "../components/CategoryList";
 
