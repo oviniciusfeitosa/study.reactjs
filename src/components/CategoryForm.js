@@ -1,4 +1,12 @@
-import { Button, TextField, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  TextField,
+  Grid,
+  Card,
+  CardContent,
+  CardActions,
+  CardHeader,
+} from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
 import React, { useState } from "react";
 import { useCategories } from "../context/CategoryContext";
@@ -19,25 +27,29 @@ export const CategoryForm = () => {
 
   return (
     <>
-      <h2>Formulário</h2>
-      <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          direction="column"
-          justify="space-around"
-          alignItems="flex-start"
-          spacing={2}
-        >
-          <Grid item xs={12}>
-            <TextField
-              required
-              id="name"
-              name="name"
-              label="Name"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12}>
+      <Card elevation={3} variant="outlined">
+        <form onSubmit={handleSubmit}>
+          <CardHeader title="Formulário" />
+          <CardContent>
+            <Grid
+              container
+              direction="column"
+              justify="space-around"
+              alignItems="flex-start"
+              spacing={2}
+            >
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id="name"
+                  name="name"
+                  label="Name"
+                  variant="outlined"
+                />
+              </Grid>
+            </Grid>
+          </CardContent>
+          <CardActions>
             <Button
               type="submit"
               variant="contained"
@@ -47,9 +59,9 @@ export const CategoryForm = () => {
             >
               Save
             </Button>
-          </Grid>
-        </Grid>
-      </form>
+          </CardActions>
+        </form>
+      </Card>
     </>
   );
 };
