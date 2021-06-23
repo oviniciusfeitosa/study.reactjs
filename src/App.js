@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Category } from "./pages/Category";
+import { CategoryPage } from "./pages/CategoryPage";
+import { CategoryProvider } from "./context/CategoryContext";
 
 function App() {
   return (
     <>
-      <Category />
+      <CategoryProvider>
+        <CategoryPage />
+      </CategoryProvider>
     </>
   );
 }

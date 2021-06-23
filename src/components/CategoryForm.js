@@ -1,6 +1,6 @@
 import { Button, TextField, Grid, Typography } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
-import react from "react";
+import React from "react";
 
 export const CategoryForm = () => {
   return (
