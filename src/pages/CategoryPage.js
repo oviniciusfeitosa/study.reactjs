@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 
 export const CategoryPage = () => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <>
@@ -45,9 +44,6 @@ export const CategoryPage = () => {
           <CategoryList />
           <CategoryForm />
         </CardContent>
-        {/* <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
       </Card>
     </>
   );

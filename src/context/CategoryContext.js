@@ -2,11 +2,14 @@ import React, { createContext, useState, useContext } from "react";
 
 const CategoryContext = createContext();
 export const CategoryProvider = ({ children }) => {
-  const [categories, setCategory] = useState([{ id: 0, name: "" }]);
+  const [categories, setCategory] = useState([]);
 
-  const addCategory = (category) => {
-    const id = ++{ ...categories[categories.length - 1] }.id;
-    setCategory([...categories, { id, name: category.name }]);
+  const addCategory = ({ ...category }) => {
+    const lastItem = { ...categories[categories.length - 1] };
+    const lastId = !!lastItem.id ? lastItem.id : 0;
+    category.id = lastId + 1;
+
+    setCategory([...categories, category]);
   };
 
   const handleEditCategory = (category) => {

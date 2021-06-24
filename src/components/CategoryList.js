@@ -29,33 +29,35 @@ function CategoryList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {categories.map((category) => (
-              <TableRow key={category.id}>
-                <TableCell component="th" scope="row">
-                  {category.id}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {category.name}
-                </TableCell>
-                <TableCell align="left">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleEditCategory(category)}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => handleDeleteCategory(category.id)}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Remove
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {categories.map((category) => {
+              return (
+                <TableRow key={category.id}>
+                  <TableCell component="th" scope="row">
+                    {category.id}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {category.name}
+                  </TableCell>
+                  <TableCell align="left">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleEditCategory(category)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => handleDeleteCategory(category.id)}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Remove
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
