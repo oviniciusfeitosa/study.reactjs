@@ -7,14 +7,16 @@
     - [x] Create a category Page
     - [ ] Create a form component
       > Fields: Name
-      - [ ] Action Create
+      - [x] Action Create
       - [ ] Action Update
     - [ ] Create a list component
+      - [x] Action List
       - [ ] Create a list route
     - [ ] Create a detail component
+      - [ ] Action detail
       - [ ] Create a detail route
-    - [ ] Action Delete
-      - [ ] Create a delete route
+    - [x] Action Delete
+      - [x] Action Delete
   - [ ] Product
     - [ ] Create a product Page
     - [ ] Create a form component
