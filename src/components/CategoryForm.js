@@ -6,23 +6,47 @@ import {
   CardContent,
   CardActions,
   CardHeader,
+  InputLabel,
+  Avatar,
+  Typography,
 } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
 import React, { useState } from "react";
 import { useCategories } from "../context/CategoryContext";
 
-export const CategoryForm = () => {
-  const { addCategory } = useCategories();
-  // const [category, setCategory] = useState({ id: 0, name: "" });
+export const CategoryForm = ({ ...category }) => {
+  const { addCategory, handleEditCategory } = useCategories();
+
+  const initialState = {
+    id: "",
+    name: "",
+  };
+
+  if (!category) {
+    category = initialState;
+  }
+
+  // const [stageCategory, setStageCategory] = useState(category);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target);
-    addCategory({
-      name: data.get("name"),
-    });
+    if (category.id) {
+      //aqui seria o edit de categoria
+      handleEditCategory(category);
+    } else {
+      addCategory({
+        name: category.name,
+      });
+    }
+
     event.target.reset();
+  };
+
+  const showLabelIdCategory = () => {
+    if (category.id) {
+      return <Typography color="textSecondary">ID: {category.id}</Typography>;
+    }
   };
 
   return (
@@ -39,12 +63,17 @@ export const CategoryForm = () => {
               spacing={2}
             >
               <Grid item xs={12}>
+                {showLabelIdCategory()}
                 <TextField
                   required
                   id="name"
                   name="name"
                   label="Name"
                   variant="outlined"
+                  value={category.name}
+                  onChange={(e) =>
+                    category({ ...stageCategory, name: e.target.value })
+                  }
                 />
               </Grid>
             </Grid>

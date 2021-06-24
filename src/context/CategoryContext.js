@@ -2,14 +2,20 @@ import React, { createContext, useState, useContext } from "react";
 
 const CategoryContext = createContext();
 export const CategoryProvider = ({ children }) => {
-  const [categories, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const addCategory = ({ ...category }) => {
+  const [category, setCategory] = useState({});
+
+  const addStageCategory = (category) => {
+    setCategory({ ...category, category });
+  };
+
+  const addCategory = (category) => {
     const lastItem = { ...categories[categories.length - 1] };
     const lastId = !!lastItem.id ? lastItem.id : 0;
     category.id = lastId + 1;
 
-    setCategory([...categories, category]);
+    setCategories([...categories, category]);
   };
 
   const handleEditCategory = (category) => {
@@ -21,20 +27,22 @@ export const CategoryProvider = ({ children }) => {
       }
     });
 
-    setCategory(editedCategories);
+    setCategories(editedCategories);
   };
 
   const handleDeleteCategory = (id) => {
-    setCategory([...categories.filter((item) => item.id !== id)]);
+    setCategories([...categories.filter((item) => item.id !== id)]);
   };
 
   return (
     <CategoryContext.Provider
       value={{
+        category,
         categories,
         addCategory,
         handleEditCategory,
         handleDeleteCategory,
+        addStageCategory,
       }}
     >
       {children}
@@ -43,8 +51,21 @@ export const CategoryProvider = ({ children }) => {
 };
 
 export function useCategories() {
-  const { categories, handleEditCategory, handleDeleteCategory, addCategory } =
-    useContext(CategoryContext);
+  const {
+    category,
+    categories,
+    handleEditCategory,
+    handleDeleteCategory,
+    addCategory,
+    addStageCategory,
+  } = useContext(CategoryContext);
 
-  return { categories, handleEditCategory, handleDeleteCategory, addCategory };
+  return {
+    category,
+    categories,
+    handleEditCategory,
+    handleDeleteCategory,
+    addCategory,
+    addStageCategory,
+  };
 }

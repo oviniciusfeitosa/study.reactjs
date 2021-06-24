@@ -13,8 +13,16 @@ import {
 } from "@material-ui/core";
 
 function CategoryList() {
-  const { categories, handleEditCategory, handleDeleteCategory } =
-    useCategories();
+  const {
+    categories,
+    handleEditCategory,
+    handleDeleteCategory,
+    addStageCategory,
+  } = useCategories();
+
+  const handleAddCategoryToStage = (category) => {
+    addStageCategory(category);
+  };
 
   return (
     <>
@@ -42,7 +50,7 @@ function CategoryList() {
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => handleEditCategory(category)}
+                      onClick={() => handleAddCategoryToStage(category)}
                     >
                       Edit
                     </Button>
